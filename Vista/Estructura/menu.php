@@ -47,6 +47,7 @@
                 <a class="dropdown-item dropdown-toggle" href="../../TP2/Ejercicio/ejercicio3.php">Ejercicio 3</a>
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" href="../../TP2/Ejercicio/ejeprueba.php">Ejer</a></li>
+                  <li><a class="dropdown-item" href="../../Pruebas/Prueba/prueba.php">Prueba</a></li>
                 </ul>
               </li>
 
