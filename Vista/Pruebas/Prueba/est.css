@@ -30,10 +30,10 @@ input[type="text"],
 select,
 textarea {
   width: 95%;
-  /*padding: 10px;*/
+  padding: 10px;
   border-radius: 5px;
   border: 1px solid #cccccc;
-  margin-bottom: 12px;
+  /*margin-bottom: 12px;*/
 }
 
 
@@ -53,7 +53,7 @@ textarea {
 .date-inputs input[type="text"] {
   width: 60px;
 }
-/*
+
 input[type="submit"] {
   background-color: #4caf50;
   color: #ffffff;
@@ -61,7 +61,7 @@ input[type="submit"] {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-}*/
+}
 
 input[type="submit"]:hover {
   background-color: #45a049;
@@ -71,4 +71,9 @@ input[type="submit"]:hover {
   color: #9c1616;
   text-align: center;
   display: none;
+}
+
+.input-valido{
+  background-color: white;
+  border: 1px solid green;
 }
