@@ -18,13 +18,15 @@ function validar(){
 //***************************************************** */
 //Validar email
 /****************************************************** */
-function validarEmail(){
-    var email = document.getElementById("email")
-    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email.value)){
-        email.style.borderColor="green";
+function validarEmail(obj){
+  
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(obj.value)){
+        $(obj).removeClass();
+        $(obj).addClass("input-valido form-control");
         return true;
-    }else {
-        email.style.borderColor="red";
+    }else {     
+        $(obj).removeClass();
+        $(obj).addClass("form-control input-novalido");
         return false;
     }
 }
@@ -38,10 +40,12 @@ function validarEmail(){
 function validarNombre(obj){
     
     if (obj.value != "" && validarCadena(obj.value)){
-        obj.style.borderColor="green";
+        $(obj).removeClass();
+        $(obj).addClass("input-valido form-control");
        return true;
     }else{
-        obj.style.borderColor="red";
+        $(obj).removeClass();
+        $(obj).addClass("form-control input-novalido");
         return false;
     }   
 }
@@ -126,8 +130,8 @@ function validarDia (dia, mes, anio){
 
 //Validar la obra social
 
-function validarObra(){
-    var obj = document.getElementById("obras_sociales")
+function validarCiudad(){
+    var obj = document.getElementById("ciudad")
     if (obj.value != ""){
         obj.style.borderColor="green";
         return true;

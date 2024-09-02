@@ -4,7 +4,7 @@ include_once "../../Estructura/header.php";
 ?>
 <link rel="stylesheet" type="text/css" href="est.css">
 <script type="text/javascript" src="fun.js"></script>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 <div class="divtitulo">
     <h1><?php echo $titulo;?></h1>
@@ -14,9 +14,8 @@ include_once "../../Estructura/header.php";
 
 <div class="container mt-3">
 <h1>Trabajo Obligatorio JS PEyLW 2024</h1>
-
-  <form id="miFormulario" novalidate>
-
+<form id="miFormulario" novalidate>
+    
     <label for="nombre">Nombre:</label>
     <div class="input-group">
       <input class="form-control" type="text" id="nombre" name="nombre">
@@ -68,17 +67,25 @@ include_once "../../Estructura/header.php";
 <script> 
 
   $(document).ready(function(){
-    $("nombre").blur(function(){
-      $(this).hide();
+    $("#nombre").blur(function(){
       validarNombre(this);
+    });
+    $("#apellido").blur(function(){
+      validarNombre(this);
+    });    
+    $("#email").blur(function(){
+      validarEmail(this);
+    });
+    $("#ciudad").blur(function(){
+      validarCiudad();
     });
   });
 
 
   //document.getElementById("nombre").addEventListener("blur", function(){ validarNombre(this);});
-  document.getElementById("apellido").addEventListener("blur", function(){ validarNombre(this);});
+  //document.getElementById("apellido").addEventListener("blur", function(){ validarNombre(this);});
   //document.getElementById("email").addEventListener("blur", validarEmail);
-  document.getElementById("ciudad").addEventListener("blur", validarciudad);
+  //document.getElementById("ciudad").addEventListener("blur", validarciudad);
   document.getElementById("dia").addEventListener("blur", validarFecha);
   document.getElementById("mes").addEventListener("blur", validarFecha);
   document.getElementById("anio").addEventListener("blur", validarFecha);
