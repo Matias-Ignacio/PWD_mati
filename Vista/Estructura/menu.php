@@ -43,14 +43,7 @@
               </li>
 
               <!-- Submenú Ejercicio 3 - TP 2 -->
-              <li class="dropdown-submenu">
-                <a class="dropdown-item dropdown-toggle" href="../../TP2/Ejercicio/ejercicio3.php">Ejercicio 3</a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="../../TP2/Ejercicio/ejeprueba.php">Ejer</a></li>
-                  <li><a class="dropdown-item" href="../../Pruebas/Prueba/prueba.php">Prueba</a></li>
-                </ul>
-              </li>
-
+              <li><a class="dropdown-item" href="../../TP2/Ejercicio/ejercicio3.php">Ejercicio 3</a></li>
               <!-- Ejercicio 4 - TP 2 -->
               <li><a class="dropdown-item" href="../../TP2/Ejercicio/ejercicio4.php">Ejercicio 4</a></li>
             </ul>
@@ -65,6 +58,7 @@
               <li><a class="dropdown-item" href="../../TP3/Ejercicio/ejercicio3.php">Ejercicio 3</a></li>
             </ul>
           </li>
+          <li><a class="dropdown-item" href="../../Pruebas/Prueba/prueba.php">Prueba</a></li>
         </ul>
       </div>
     </div>

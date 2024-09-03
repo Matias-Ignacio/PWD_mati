@@ -23,11 +23,13 @@ function validarEmail(obj){
     var obj2 = obj.find("span");
     if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test($(obj1).val())){
         val_positiva(obj1, obj2);
-        return true;
-    }else {     
+        $(obj2).html('<img src="../../Librerias/node_modules/bootstrap-icons/icons/check-circle.svg"></img>');
+       return true;
+    }else{
         val_negativa(obj1, obj2);
+        $(obj2).html('<img src="../../Librerias/node_modules/bootstrap-icons/icons/exclamation-triangle.svg"></img>');
         return false;
-    }
+    }   
 }
 
 //***************************************************** */
@@ -41,9 +43,11 @@ function validarNombre(obj){
     var obj2 = obj.find("span");
     if ($(obj1).val() != "" && validarCadena($(obj1).val())){
         val_positiva(obj1, obj2);
+        $(obj2).html('<img src="../../Librerias/node_modules/bootstrap-icons/icons/check-circle.svg"></img>');
        return true;
     }else{
         val_negativa(obj1, obj2);
+        $(obj2).html('<img src="../../Librerias/node_modules/bootstrap-icons/icons/exclamation-triangle.svg"></img>');
         return false;
     }   
 }
@@ -59,7 +63,6 @@ function val_positiva(obj1, obj2){
     $(obj1).css("border", "1px green solid")
     $(obj1).removeClass();
     $(obj1).addClass("input-valido form-control");
-    $(obj2).html('<img src="../../Librerias/node_modules/bootstrap-icons/icons/check-circle.svg"></img>');
     $(obj2).removeClass();
     $(obj2).addClass("input-valido input-group-text");
 }
@@ -67,7 +70,6 @@ function val_negativa(obj1, obj2){
     $(obj1).css("border", "1px red solid")
     $(obj1).removeClass();
     $(obj1).addClass("form-control input-novalido");
-    $(obj2).html('<img src="../../Librerias/node_modules/bootstrap-icons/icons/exclamation-triangle.svg"></img>');
     $(obj2).removeClass();
     $(obj2).addClass("input-group-text input-novalido");
 }
