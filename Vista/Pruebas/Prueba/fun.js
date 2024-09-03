@@ -22,11 +22,11 @@ function validarEmail(obj){
     var obj1 = obj.find("input");
     var obj2 = obj.find("span");
     if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test($(obj1).val())){
-        val_positiva(obj1, obj2);
+        val_positiva(obj);
         $(obj2).html('<img src="../../Librerias/node_modules/bootstrap-icons/icons/check-circle.svg"></img>');
        return true;
     }else{
-        val_negativa(obj1, obj2);
+        val_negativa(obj);
         $(obj2).html('<img src="../../Librerias/node_modules/bootstrap-icons/icons/exclamation-triangle.svg"></img>');
         return false;
     }   
@@ -41,12 +41,12 @@ function validarEmail(obj){
 function validarNombre(obj){
     var obj1 = obj.find("input");
     var obj2 = obj.find("span");
-    if ($(obj1).val() != "" && validarCadena($(obj1).val())){
-        val_positiva(obj1, obj2);
+    if ($(obj1).val() != "" && validarSoloLetra($(obj1).val())){
+        val_positiva(obj);
         $(obj2).html('<img src="../../Librerias/node_modules/bootstrap-icons/icons/check-circle.svg"></img>');
        return true;
     }else{
-        val_negativa(obj1, obj2);
+        val_negativa(obj);
         $(obj2).html('<img src="../../Librerias/node_modules/bootstrap-icons/icons/exclamation-triangle.svg"></img>');
         return false;
     }   
@@ -54,24 +54,108 @@ function validarNombre(obj){
 
 //***************************************************** */
 
-function validarDni(obj){
+//***************************************************** */
+//Validar nombre de usuario
+/****************************************************** */
+function validarUsuario(obj){
+    var obj1 = obj.find("input");
+    var obj2 = obj.find("span");
+    if ($(obj1).val() != "" && validarLetraNum($(obj1).val())){
+        val_positiva(obj);
+        $(obj2).html('<img src="../../Librerias/node_modules/bootstrap-icons/icons/person-check.svg"></img>');
+       return true;
+    }else{
+        val_negativa(obj);
+        $(obj2).html('<img src="../../Librerias/node_modules/bootstrap-icons/icons/person-exclamation.svg"></img>');
+        return false;
+    }   
+}
+//***************************************************** */
 
+//***************************************************** */
+//Validar contraseña
+/****************************************************** */
+function validarContrasenia(obj){
+    var obj1 = obj.find("input");
+    var obj2 = obj.find("span");
+    var cadena = $(obj1).val();
+    if (cadena != "" && validarLetraNum(cadena) && cadena.length > 8){
+        val_positiva(obj);
+        $(obj2).html('<img src="../../Librerias/node_modules/bootstrap-icons/icons/eye-slash.svg"></img>');
+       return true;
+    }else{
+        val_negativa(obj);
+        $(obj2).html('<img src="../../Librerias/node_modules/bootstrap-icons/icons/eye-slash-fill.svg"></img>');
+        return false;
+    }   
+}
+//***************************************************** */
+
+//***************************************************** */
+//Contraseña visible
+/****************************************************** */
+function contraseniaVisible(obj){
+    var obj1 = obj.find("input");
+    var obj2 = obj.find("span");
+    var cadena = $(obj1).attr("type");
+    if (cadena == "password"){
+        $(obj1).attr("type", "text");
+        $(obj2).html('<img src="../../Librerias/node_modules/bootstrap-icons/icons/eye.svg"></img>');
+       return true;
+    }else{
+        $(obj1).attr("type", "password");
+        $(obj2).html('<img src="../../Librerias/node_modules/bootstrap-icons/icons/eye-slash.svg"></img>');
+        return false;
+    }   
+}
+//***************************************************** */
+
+//***************************************************** */
+//Validar numero de dni entre 1M y 99M 
+/****************************************************** */
+function validarDni(obj){
+    var obj1 = obj.find("input");
+    var obj2 = obj.find("span");
+    var cadena = $(obj1).val();
+    
+    if (cadena != "" && esNumero(cadena) && cadena.length > 6 && cadena<99999999 && cadena>1000000){ 
+        val_positiva(obj);
+        $(obj2).html('<img src="../../Librerias/node_modules/bootstrap-icons/icons/pass.svg"></img>');
+       return true;
+    }else{
+        val_negativa(obj);
+        $(obj2).html('<img src="../../Librerias/node_modules/bootstrap-icons/icons/pass-fill.svg"></img>');
+        return false;
+    }  
 }
 
 
-function val_positiva(obj1, obj2){
-    $(obj1).css("border", "1px green solid")
+function val_positiva(obj1){     //obj1, obj2
+   // $(obj1).css("border", "1px green solid")
     $(obj1).removeClass();
-    $(obj1).addClass("input-valido form-control");
-    $(obj2).removeClass();
-    $(obj2).addClass("input-valido input-group-text");
+    $(obj1).addClass("input-valido input-group mb-3");
+    //$(obj2).removeClass();
+    //$(obj2).addClass("input-valido input-group-text");
 }
 function val_negativa(obj1, obj2){
-    $(obj1).css("border", "1px red solid")
+    //$(obj1).css("border", "1px red solid")
     $(obj1).removeClass();
-    $(obj1).addClass("form-control input-novalido");
-    $(obj2).removeClass();
-    $(obj2).addClass("input-group-text input-novalido");
+    $(obj1).addClass("input-novalido input-group mb-3"); //form-control
+    //$(obj2).removeClass();
+    //$(obj2).addClass("input-group-text input-novalido");
+}
+//***************************************************** */
+//Validar numero
+/****************************************************** */
+function esNumero(cadena){
+    //var cadena = obj.value;
+    var i = 0; 
+	
+    while (i < cadena.length){
+        if (!(/[0-9]/.test(cadena.at(i)))) {return false;}
+        i++;
+    }
+    return true;
 }
 //***************************************************** */
 //Validar fechas
@@ -162,11 +246,21 @@ function validarCiudad(){
 }
 
 //Validar cadena por formato
-function validarCadena(cadena){
+function validarSoloLetra(cadena){
     var i = 0; 
 	
     while (i < cadena.length){
         if (!(/[A-z ñÑ'áéíóúüÁÉÍÓÚ]/.test(cadena.at(i)))) {return false;}
+        i++;
+    }
+    return true;
+}
+//Validar cadena por formato
+function validarLetraNum(cadena){
+    var i = 0; 
+	
+    while (i < cadena.length){
+        if (!(/[A-z 0-9 ñÑ'áéíóúüÁÉÍÓÚ]/.test(cadena.at(i)))) {return false;}
         i++;
     }
     return true;
