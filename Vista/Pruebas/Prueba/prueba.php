@@ -16,22 +16,29 @@ include_once "../../Estructura/header.php";
 <h1>Trabajo Obligatorio JS PEyLW 2024</h1>
 <form id="miFormulario" novalidate>
     
-    <label for="nombre">Nombre:</label>
-    <div class="input-group">
+    <label for="lnombre">Nombre:</label>
+    <div class="input-group mb-3" id="div_nombre">
       <input class="form-control" type="text" id="nombre" name="nombre">
-      <span class="input-group-text input-valido">X</span>
+      <span class="input-group-text"><img src="../../Librerias/node_modules/bootstrap-icons/icons/fonts.svg">
+ 
     </div>
 
-    <label for="apellido">Apellido:</label>
-    <div class="input-group mb-3">
+    <label for="lapellido">Apellido:</label>
+    <div class="input-group mb-3" id="div_apellido">
       <input class="form-control" type="text" id="apellido" name="apellido">
-      <span class="input-group-text">!</span>
+      <span class="input-group-text"><img src="../../Librerias/node_modules/bootstrap-icons/icons/fonts.svg">
     </div>
 
-    <label for="email">Email:</label>
-    <div class="input-group mb-3">
+    <label for="lemail">Email:</label>
+    <div class="input-group mb-3" id="div_email">
       <input class="form-control" type="text" id="email" name="email">
-      <span class="input-group-text input-valido">@</span>
+      <span class="input-group-text"><img src="../../Librerias/node_modules/bootstrap-icons/icons/envelope-at.svg">
+    </div>  
+
+    <label for="ldni">DNI:</label>
+    <div class="input-group mb-3" id="div_dni">
+      <input class="form-control" type="text" id="dni" name="dni">
+      <span class="input-group-text"><img src="../../Librerias/node_modules/bootstrap-icons/icons/fonts.svg">
     </div>  
 
     <label for="ciudad">Ciudad:</label>
@@ -68,14 +75,17 @@ include_once "../../Estructura/header.php";
 
   $(document).ready(function(){
     $("#nombre").blur(function(){
-      validarNombre(this);
+      validarNombre($("#div_nombre"));
     });
     $("#apellido").blur(function(){
-      validarNombre(this);
+      validarNombre($("#div_apellido"));
     });    
     $("#email").blur(function(){
-      validarEmail(this);
+      validarEmail("#div_email");
     });
+    $("#dni").blur(function(){
+      validarDni("#div_dni");
+    }); 
     $("#ciudad").blur(function(){
       validarCiudad();
     });
@@ -92,3 +102,5 @@ include_once "../../Estructura/header.php";
 </script>
 
 
+<span class="input-group-text input-valido"><img src="../../Librerias/node_modules/bootstrap-icons/icons/check-circle.svg"></span>
+<span class="input-group-text input-novalido"><img src="../../Librerias/node_modules/bootstrap-icons/icons/exclamation-triangle.svg"></span>

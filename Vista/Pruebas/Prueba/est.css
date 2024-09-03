@@ -76,8 +76,10 @@ input[type="submit"]:hover {
 .input-valido{
   background-color: rgb(149, 238, 149);
   border: 2px solid green;
+  border-radius: 5px;
 }
 .input-novalido{
   background-color: rgb(245, 145, 145);
   border: 2px solid red;
+  border-radius: 5px;
 }
