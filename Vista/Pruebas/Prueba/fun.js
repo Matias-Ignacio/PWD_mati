@@ -19,15 +19,17 @@ function validar(){
 //Validar email
 /****************************************************** */
 function validarEmail(obj){
-    var obj1 = obj.find("input");
-    var obj2 = obj.find("span");
-    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test($(obj1).val())){
-        val_positiva(obj);
-        $(obj2).html('<img src="../../Librerias/node_modules/bootstrap-icons/icons/check-circle.svg"></img>');
+    var obj1 = obj.find(".input-group");
+    var obj2 = obj1.find("input");
+    var obj3 = obj1.find("span");
+    var obj4 = obj.find(".subtitulo");
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test($(obj2).val())){
+        val_positiva(obj1, obj3, obj4);
+        $(obj3).html('<img src="../../Librerias/node_modules/bootstrap-icons/icons/check-circle.svg"></img>');
        return true;
     }else{
-        val_negativa(obj);
-        $(obj2).html('<img src="../../Librerias/node_modules/bootstrap-icons/icons/exclamation-triangle.svg"></img>');
+        val_negativa(obj1, obj3, obj4);
+        $(obj3).html('<img src="../../Librerias/node_modules/bootstrap-icons/icons/exclamation-triangle.svg"></img>');
         return false;
     }   
 }
@@ -39,15 +41,17 @@ function validarEmail(obj){
 //Validar nombre y apellido
 /****************************************************** */
 function validarNombre(obj){
-    var obj1 = obj.find("input");
-    var obj2 = obj.find("span");
-    if ($(obj1).val() != "" && validarSoloLetra($(obj1).val())){
-        val_positiva(obj);
-        $(obj2).html('<img src="../../Librerias/node_modules/bootstrap-icons/icons/check-circle.svg"></img>');
+    var obj1 = obj.find(".input-group");
+    var obj2 = obj1.find("input");
+    var obj3 = obj1.find("span");
+    var obj4 = obj.find(".subtitulo");
+    if ($(obj2).val() != "" && validarSoloLetra($(obj2).val())){
+        val_positiva(obj1, obj3, obj4);
+        $(obj3).html('<img src="../../Librerias/node_modules/bootstrap-icons/icons/check-circle.svg"></img>');
        return true;
     }else{
-        val_negativa(obj);
-        $(obj2).html('<img src="../../Librerias/node_modules/bootstrap-icons/icons/exclamation-triangle.svg"></img>');
+        val_negativa(obj1, obj3, obj4);
+        $(obj3).html('<img src="../../Librerias/node_modules/bootstrap-icons/icons/exclamation-triangle.svg"></img>');
         return false;
     }   
 }
@@ -58,15 +62,17 @@ function validarNombre(obj){
 //Validar nombre de usuario
 /****************************************************** */
 function validarUsuario(obj){
-    var obj1 = obj.find("input");
-    var obj2 = obj.find("span");
-    if ($(obj1).val() != "" && validarLetraNum($(obj1).val())){
-        val_positiva(obj);
-        $(obj2).html('<img src="../../Librerias/node_modules/bootstrap-icons/icons/person-check.svg"></img>');
+    var obj1 = obj.find(".input-group");
+    var obj2 = obj1.find("input");
+    var obj3 = obj1.find("span");
+    var obj4 = obj.find(".subtitulo");
+    if ($(obj2).val() != "" && validarLetraNum($(obj2).val())){
+        val_positiva(obj1, obj3, obj4);
+        $(obj3).html('<img src="../../Librerias/node_modules/bootstrap-icons/icons/person-check.svg"></img>');
        return true;
     }else{
-        val_negativa(obj);
-        $(obj2).html('<img src="../../Librerias/node_modules/bootstrap-icons/icons/person-exclamation.svg"></img>');
+        val_negativa(obj1, obj3, obj4);
+        $(obj3).html('<img src="../../Librerias/node_modules/bootstrap-icons/icons/person-exclamation.svg"></img>');
         return false;
     }   
 }
@@ -76,16 +82,18 @@ function validarUsuario(obj){
 //Validar contraseña
 /****************************************************** */
 function validarContrasenia(obj){
-    var obj1 = obj.find("input");
-    var obj2 = obj.find("span");
-    var cadena = $(obj1).val();
+    var obj1 = obj.find(".input-group");
+    var obj2 = obj1.find("input");
+    var obj3 = obj1.find("span");
+    var obj4 = obj.find(".subtitulo");
+    var cadena = $(obj2).val();
     if (cadena != "" && validarLetraNum(cadena) && cadena.length > 8){
-        val_positiva(obj);
-        $(obj2).html('<img src="../../Librerias/node_modules/bootstrap-icons/icons/eye-slash.svg"></img>');
+        val_positiva(obj1, obj3, obj4);
+        $(obj3).html('<img src="../../Librerias/node_modules/bootstrap-icons/icons/eye-slash.svg"></img>');
        return true;
     }else{
-        val_negativa(obj);
-        $(obj2).html('<img src="../../Librerias/node_modules/bootstrap-icons/icons/eye-slash-fill.svg"></img>');
+        val_negativa(obj1, obj3, obj4);
+        $(obj3).html('<img src="../../Librerias/node_modules/bootstrap-icons/icons/eye-slash-fill.svg"></img>');
         return false;
     }   
 }
@@ -95,16 +103,18 @@ function validarContrasenia(obj){
 //Contraseña visible
 /****************************************************** */
 function contraseniaVisible(obj){
-    var obj1 = obj.find("input");
-    var obj2 = obj.find("span");
-    var cadena = $(obj1).attr("type");
+    var obj1 = obj.find(".input-group");
+    var obj2 = obj1.find("input");
+    var obj3 = obj1.find("span");
+    var obj4 = obj.find(".subtitulo");
+    var cadena = $(obj2).attr("type");
     if (cadena == "password"){
-        $(obj1).attr("type", "text");
-        $(obj2).html('<img src="../../Librerias/node_modules/bootstrap-icons/icons/eye.svg"></img>');
+        $(obj2).attr("type", "text");
+        $(obj3).html('<img src="../../Librerias/node_modules/bootstrap-icons/icons/eye.svg"></img>');
        return true;
     }else{
-        $(obj1).attr("type", "password");
-        $(obj2).html('<img src="../../Librerias/node_modules/bootstrap-icons/icons/eye-slash.svg"></img>');
+        $(obj2).attr("type", "password");
+        $(obj3).html('<img src="../../Librerias/node_modules/bootstrap-icons/icons/eye-slash.svg"></img>');
         return false;
     }   
 }
@@ -114,33 +124,41 @@ function contraseniaVisible(obj){
 //Validar numero de dni entre 1M y 99M 
 /****************************************************** */
 function validarDni(obj){
-    var obj1 = obj.find("input");
-    var obj2 = obj.find("span");
-    var cadena = $(obj1).val();
+    var obj1 = obj.find(".input-group");
+    var obj2 = obj1.find("input");
+    var obj3 = obj1.find("span");
+    var obj4 = obj.find(".subtitulo");
+    var cadena = $(obj2).val();
     
     if (cadena != "" && esNumero(cadena) && cadena.length > 6 && cadena<99999999 && cadena>1000000){ 
-        val_positiva(obj);
-        $(obj2).html('<img src="../../Librerias/node_modules/bootstrap-icons/icons/pass.svg"></img>');
+        val_positiva(obj1, obj3, obj4);
+        $(obj3).html('<img src="../../Librerias/node_modules/bootstrap-icons/icons/pass.svg"></img>');
        return true;
     }else{
-        val_negativa(obj);
-        $(obj2).html('<img src="../../Librerias/node_modules/bootstrap-icons/icons/pass-fill.svg"></img>');
+        val_negativa(obj1, obj3, obj4);
+        $(obj3).html('<img src="../../Librerias/node_modules/bootstrap-icons/icons/pass-fill.svg"></img>');
         return false;
     }  
 }
 
 
-function val_positiva(obj1){     //obj1, obj2
+function val_positiva(obj1, obj3, obj4){     //obj1, obj2
    // $(obj1).css("border", "1px green solid")
     $(obj1).removeClass();
     $(obj1).addClass("input-valido input-group mb-3");
+    $(obj3).css({"background-color": "green"});
+    $(obj4).css({"color": "green"});
+    $(obj4).html("OK!");
     //$(obj2).removeClass();
     //$(obj2).addClass("input-valido input-group-text");
 }
-function val_negativa(obj1, obj2){
+function val_negativa(obj1, obj3, obj4){
     //$(obj1).css("border", "1px red solid")
     $(obj1).removeClass();
     $(obj1).addClass("input-novalido input-group mb-3"); //form-control
+    $(obj3).css({"background-color": "red"});
+    $(obj4).css({"color": "red"});
+    $(obj4).html("Datos inválidos!");
     //$(obj2).removeClass();
     //$(obj2).addClass("input-group-text input-novalido");
 }
@@ -210,29 +228,16 @@ function validarFecha (){
 
 // valida el dia
 function validarDia (dia, mes, anio){
-    var validar = false;
-    
-    if (dia <32 && dia > 0){
-        switch (mes){
-            case 2:
-                if ((dia <= 28) || ((dia == 29) && (anio%4 == 0))){
-                    validar = true;}
-                break;
-            case 4:
-            case 6:
-            case 9:
-            case 11:               
-                if (dia <= 30) {validar = true;}
-                break;
-            default:
-                validar = true;        
-        }
-    }    
-    return validar;
+    var meses = [31, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+    if(((dia<=meses[mes]) && dia>0)|| ((mes==2) && (dia == 29) && (anio%4 == 0))){
+        return true;
+    }
+    return false;
 }
 //************************************************************************ */
 
-//Validar la obra social
+//Validar la ciudad
 
 function validarCiudad(){
     var obj = document.getElementById("ciudad")

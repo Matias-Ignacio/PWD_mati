@@ -13,64 +13,64 @@ include_once "../../Estructura/header.php";
 
 
 <div class="container mt-3">
-<h1>Input validados</h1>
+  <h1>Input validados</h1>
 <form id="miFormulario" class="row g-3 needs-validation" novalidate>
     
-<div class="col-md-6">
+<div class="col-md-6 campos" id="div_nombre">
     <label for="lnombre">Nombre:</label>
-    <div class="input-group mb-3" id="div_nombre">
-      <input class="form-control" type="text" id="nombre" name="nombre">
+    <div class="input-group mb-3">
+      <input class="form-control" type="text" id="nombre" name="nombre" placeholder="Ingrese nombre">
       <span class="input-group-text"><img src="../../Librerias/node_modules/bootstrap-icons/icons/fonts.svg"></span>
     </div>
-    <div class="">Complete este campo...</div>
+    <div class="subtitulo">Complete este campo...</div>
 </div>    
 
-<div class="col-md-6">
+<div class="col-md-6" id="div_apellido">
     <label for="lapellido">Apellido:</label>
-    <div class="input-group mb-3" id="div_apellido">
-      <input class="form-control" type="text" id="apellido" name="apellido">
+    <div class="input-group mb-3">
+      <input class="form-control" type="text" id="apellido" name="apellido" placeholder="Ingrese apellido">
       <span class="input-group-text"><img src="../../Librerias/node_modules/bootstrap-icons/icons/fonts.svg"></span>
     </div>
-    <div class="">Complete este campo...</div>
+    <div class="subtitulo">Complete este campo...</div>
 </div> 
 
-<div class="col-md-12">
+<div class="col-md-12" id="div_email">
     <label for="lemail">Email:</label>
-    <div class="input-group mb-3" id="div_email">
-      <input class="form-control" type="text" id="email" name="email">
+    <div class="input-group mb-3">
+      <input class="form-control" type="text" id="email" name="email" placeholder="Ingrese email válido">
       <span class="input-group-text"><img src="../../Librerias/node_modules/bootstrap-icons/icons/envelope-at.svg"></span>
     </div>  
-    <div class="">Complete este campo...</div>
+    <div class="subtitulo">Complete este campo...</div>
 </div> 
 
-<div class="col-md-6">
+<div class="col-md-6" id="div_usuario">
   <label for="lusuario">Usuario:</label>
-  <div class="input-group mb-3" id="div_usuario">
-    <input class="form-control" type="text" id="usuario" name="usuario">
+  <div class="input-group mb-3">
+    <input class="form-control" type="text" id="usuario" name="usuario" placeholder="Ingrese nombre de usuario">
     <span class="input-group-text"><img src="../../Librerias/node_modules/bootstrap-icons/icons/person.svg"></span>
   </div> 
-  <div class="">Complete este campo...</div>
+  <div class="subtitulo">Complete este campo...</div>
 </div> 
 
-<div class="col-md-6">
+<div class="col-md-6" id="div_contrasenia">
   <label for="lcontrasenia">Contraseña:</label>
   <div class="input-group mb-3" id="div_contrasenia">
-    <input class="form-control" type="password" id="contrasenia" name="contrasenia">
+    <input class="form-control" type="password" id="contrasenia" name="contrasenia" placeholder="Ingrese contraseña">
     <span class="input-group-text" id="spanContrasenia"><img src="../../Librerias/node_modules/bootstrap-icons/icons/eye-slash.svg"></span>
   </div> 
-  <div class="">Complete este campo...</div>
+  <div class="subtitulo">Complete este campo...</div>
 </div> 
 
-<div class="col-md-4">
+<div class="col-md-4" id="div_dni">
     <label for="ldni">DNI:</label>
     <div class="input-group mb-3" id="div_dni">
-      <input class="form-control" type="text" id="dni" name="dni">
+      <input class="form-control" type="text" id="dni" name="dni" placeholder="Ingrese D.N.I.">
       <span class="input-group-text"><img src="../../Librerias/node_modules/bootstrap-icons/icons/pass.svg"></span>
     </div> 
-    <div class="">Complete este campo...</div>
+    <div class="subtitulo">Complete este campo...</div>
 </div>  
 
-<div class="col-md-4">
+<div class="col-md-4" id="div_ciudad">
     <label for="ciudad">Ciudad:</label>
     <div class="input-group mb-3" id="div_ciudad">
       <select class="form-control" id="ciudad" name="ciudad">
@@ -81,17 +81,17 @@ include_once "../../Estructura/header.php";
         <!-- Agrega más opciones aquí -->
       </select>
     </div>
-    <div class="">Complete este campo...</div>
+    <div class="subtitulo">Complete este campo...</div>
 </div> 
 
-<div class="col-md-4">
+<div class="col-md-4" id="div_fecha">
     <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
     <div class="input-group mb-3" id="div_fecha">
       <input class="form-control" type="text" id="dia" name="dia" placeholder="D&iacute;a">  
       <input class="form-control" type="text" id="mes" name="mes" placeholder="Mes"> 
       <input class="form-control" type="text" id="anio" name="anio" placeholder="A&ntilde;o">
     </div>
-    <div class="">Complete este campo...</div>
+    <div class="subtitulo">Complete este campo...</div>
 </div> 
 
     <div id="divUsoOpcional"></div>

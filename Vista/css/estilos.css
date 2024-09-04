@@ -55,10 +55,10 @@ body {
     background-color: blueviolet;
     color: yellowgreen;
     font-weight: bold;
-    width: 100%; /* Ocupa todo el ancho */
-    margin: 0; /* Elimina márgenes */
+    width: 90%; /* Ocupa todo el ancho */
+    margin: 0px; /* Elimina márgenes */
     padding: 10px;
-    padding-top: 5%;
+    padding-top: 2%;
     text-align: center;
     box-sizing: border-box; /* Asegura que el padding no cause desbordamiento */
 }
