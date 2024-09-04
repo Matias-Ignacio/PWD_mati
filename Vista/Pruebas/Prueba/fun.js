@@ -140,35 +140,46 @@ function validarDni(obj){
         return false;
     }  
 }
+//***************************************************** */
+//Validar numero telefono minimo de 8 digitos
+/****************************************************** */
+function validarDni(obj){
+    var obj1 = obj.find(".input-group");
+    var obj2 = obj1.find("input");
+    var obj3 = obj1.find("span");
+    var obj4 = obj.find(".subtitulo");
+    var cadena = $(obj2).val();
+    
+    if (cadena != "" && esNumero(cadena) && cadena.length > 8 && cadena.length<15){ 
+        val_positiva(obj1, obj3, obj4);
+        $(obj3).html('<img src="../../Librerias/node_modules/bootstrap-icons/icons/telephone.svg"></img>');
+       return true;
+    }else{
+        val_negativa(obj1, obj3, obj4);
+        $(obj3).html('<img src="../../Librerias/node_modules/bootstrap-icons/icons/exclamation-triangle.svg"></img>');
+        return false;
+    }  
+}
 
-
-function val_positiva(obj1, obj3, obj4){     //obj1, obj2
-   // $(obj1).css("border", "1px green solid")
+function val_positiva(obj1, obj3, obj4){ 
     $(obj1).removeClass();
     $(obj1).addClass("input-valido input-group mb-3");
-    $(obj3).css({"background-color": "green"});
+    $(obj3).css({"background-color": "rgb(183, 243, 183"});
     $(obj4).css({"color": "green"});
     $(obj4).html("OK!");
-    //$(obj2).removeClass();
-    //$(obj2).addClass("input-valido input-group-text");
 }
 function val_negativa(obj1, obj3, obj4){
-    //$(obj1).css("border", "1px red solid")
     $(obj1).removeClass();
-    $(obj1).addClass("input-novalido input-group mb-3"); //form-control
-    $(obj3).css({"background-color": "red"});
+    $(obj1).addClass("input-novalido input-group mb-3");
+    $(obj3).css({"background-color": "rgb(249, 188, 188)"});
     $(obj4).css({"color": "red"});
     $(obj4).html("Datos inválidos!");
-    //$(obj2).removeClass();
-    //$(obj2).addClass("input-group-text input-novalido");
 }
 //***************************************************** */
 //Validar numero
 /****************************************************** */
 function esNumero(cadena){
-    //var cadena = obj.value;
     var i = 0; 
-	
     while (i < cadena.length){
         if (!(/[0-9]/.test(cadena.at(i)))) {return false;}
         i++;
@@ -213,7 +224,7 @@ function validarFecha (){
     }else{
         document.getElementById("mes").style.borderColor="red";
     }
-    if(validarDia(dia, mes, anio) && !(anio == fechaActual.getFullYear() && (mes >= (fechaActual.getMonth()+1)) && (dia > fechaActual.getDate()-1))){
+    if(validarDia(dia, mes, anio)){// && !(anio == fechaActual.getFullYear() && (mes >= (fechaActual.getMonth()+1)) && (dia > fechaActual.getDate()-1))){
         v_dia =true;
         document.getElementById("dia").style.borderColor="green";
     }else{

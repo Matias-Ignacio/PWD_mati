@@ -34,7 +34,7 @@ include_once "../../Estructura/header.php";
     <div class="subtitulo">Complete este campo...</div>
 </div> 
 
-<div class="col-md-12" id="div_email">
+<div class="col-md-6" id="div_email">
     <label for="lemail">Email:</label>
     <div class="input-group mb-3">
       <input class="form-control" type="text" id="email" name="email" placeholder="Ingrese email válido">
@@ -42,6 +42,15 @@ include_once "../../Estructura/header.php";
     </div>  
     <div class="subtitulo">Complete este campo...</div>
 </div> 
+
+<div class="col-md-6" id="div_telefono">
+    <label for="ltelefono">Telefono:</label>
+    <div class="input-group mb-3" id="div_telefono">
+      <input class="form-control" type="text" id="telefono" name="telefono" placeholder="Ingrese número">
+      <span class="input-group-text"><img src="../../Librerias/node_modules/bootstrap-icons/icons/telephone-x-fill.svg"></span>
+    </div> 
+    <div class="subtitulo">Complete este campo...</div>
+</div>  
 
 <div class="col-md-6" id="div_usuario">
   <label for="lusuario">Usuario:</label>
@@ -115,6 +124,9 @@ include_once "../../Estructura/header.php";
     $("#email").blur(function(){
       validarEmail($("#div_email"));
     });
+    $("#telefono").blur(function(){
+      validarDni($("#div_telefono"));
+    }); 
     $("#dni").blur(function(){
       validarDni($("#div_dni"));
     }); 
