@@ -4,7 +4,7 @@ include_once('../../Estructura/header.php');
 ?>
 
 <!-- JQUERY con las validaciones de los campos -->
-<script type="text/javascript" src="../../Js/tp2ej2-2.js"></script>
+<script type="text/javascript" src="../../Js/tp2.js"></script>
 
 <!-- CSS con los estilos del error en los campos inválidos -->
 <link rel="stylesheet" type="text/css" href="../../css/error.css">
@@ -21,19 +21,20 @@ include_once('../../Estructura/header.php');
 
 <!-- Formularo -->
 <div class="divform">
-  <form action="../Accion/ej2-2accion.php" method="get" id="form2" name="form2">
-      Lunes:<input type="text" id="lunes" name="lunes" class="dia" oninput="validarNumero(this)"><br><br>
+  <form action="../Accion/ej2-2accion.php" method="get" id="miFormulario" name="form2">
+      Lunes:<input type="text" id="lunes" name="lunes" class="dia" maxlength="1"><br><br>
 
-      Martes:<input type="text" id="martes" name="martes" class="dia" oninput="validarNumero(this)"><br><br>
+      Martes:<input type="text" id="martes" name="martes" class="dia" maxlength="1"><br><br>
 
-      Mi&eacute;rcoles:<input type="text" id="miercoles" name="miercoles" class="dia" oninput="validarNumero(this)"><br><br>
+      Mi&eacute;rcoles:<input type="text" id="miercoles" name="miercoles" class="dia" maxlength="1"><br><br>
 
-      Jueves:<input type="text" id="jueves" name="jueves" class="dia" oninput="validarNumero(this)"><br><br>
+      Jueves:<input type="text" id="jueves" name="jueves" class="dia" maxlength="1"><br><br>
 
-      Viernes:<input type="text" id="viernes" name="viernes" class="dia" oninput="validarNumero(this)"><br><br>
-
+      Viernes:<input type="text" id="viernes" name="viernes" class="dia" maxlength="1"><br><br>
+      <div class="error-numero" ><span class="h5 mb-4 text-primary">IMPORTANTE!! completar con ceros los campos incompletos</span></div><br><br>
   <button type="submit" class="btn btn-success" role="button">Calcular Horas Totales</button>
   </form>
+  
 </div>
 
 <?php

@@ -4,7 +4,7 @@ include_once '../../Estructura/header.php';
 ?>
 
 <!--JQUERY con validaciones de los campos-->
-<script src="../../Js/tp2ej2-7.js"></script>
+<script src="../../Js/tp2.js"></script>
 
 <div class="divtitulo">
     <h1><?php echo $titulo;?></h1>
@@ -17,13 +17,16 @@ include_once '../../Estructura/header.php';
 </div>
 
 <div class="divform">
-    <form id="form7" name="form7" method="get" action="../Accion/ej2-7accion.php">
+    <form id="miFormulario" name="form7" method="get" action="../Accion/ej2-7accion.php">
         <label>N&uacute;mero 1:</label>
-        <input type="text" id="numero1" name="numero1">
+        <input type="number" id="numero" name="numero1" min="1" step="1">
+        <br><br>
 
         <label>N&uacute;mero 2:</label>
-        <input type="text" id="numero2" name="numero2">
+        <input type="number" id="numero" name="numero2" min="1" step="1">
+        <div class="error-numero"></div>
         <br><br>
+        
 
         <select name="operacion" id="operacion">
           <option value="">Seleccione una opci&oacute;n</option>
@@ -31,7 +34,9 @@ include_once '../../Estructura/header.php';
           <option value="resta">Resta</option>
           <option value="multiplicacion">Multiplicaci&oacute;n</option>
           <option value="division">Divisi&oacute;n</option>
-        </select><br><br>
+        </select>
+        <div class="error-operacion"></div>
+        <br><br>
 
         <input type="submit" value="Calcular" class="btn btn-success" role="button">
     </form>

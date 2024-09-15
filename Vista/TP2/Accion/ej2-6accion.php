@@ -16,7 +16,7 @@ if(!empty(data_submitted())){
         }
     }
     $cadena = "Hola, yo soy ".$objpersona->getNombre()." ".$objpersona->getApellido()." tengo ".$objpersona->getEdad()." años y vivo en la calle ".$objpersona->getDireccion().
-    ".  " . $objpersona->mayorEdad() . " mayor de edad."."<br>Estudios cursados: " . $objpersona->mostrarEstudios() . "<br> Soy de sexo " . $objpersona->mostrarSexo(). "<br>";
+    ".  <br> Soy de sexo " . $objpersona->mostrarSexo(). "<br>";
     $cadena .= "Mis deportes preferidos son: " . $objpersona->mostrarDeportes() . "<br>";
     ?>
     <div class="divform">

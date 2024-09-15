@@ -82,10 +82,7 @@ input[type="reset"]:hover {
   border: 1px solid red;
   border-radius: 5px;
 }
-div .input-group{
-  border-radius: 5px;
-  margin-bottom: 0px;
-}
+
 div .subtitulo{
   margin-top: 0px;
   font-size: small;

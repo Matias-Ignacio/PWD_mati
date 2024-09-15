@@ -133,6 +133,15 @@ include_once '../../Estructura/header.php';
         </div>
     </div>
 
+<script>
+  /*  $(document).ready(function(){
+        $("#anio").keypress(function(){
+            validarAnio(this);
+        });
+    });*/
+    document.getElementById("anio").addEventListener("blur", function(){ validarAnio(this);});
+</script>
+
 <?php
 include_once '../../Estructura/footer.php';
 ?>

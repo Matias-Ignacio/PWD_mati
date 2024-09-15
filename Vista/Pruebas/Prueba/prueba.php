@@ -18,11 +18,11 @@ include_once "../../Estructura/header.php";
     
 <div class="col-md-6 campos" id="div_nombre">
     <label for="lnombre">Nombre:</label>
-    <div class="input-group mb-3">
+    <div class="grupoISD mb-3">
       <input class="form-control" type="text" id="nombre" name="nombre" placeholder="Ingrese nombre">
       <span class="input-group-text"><img src="../../Librerias/node_modules/bootstrap-icons/icons/fonts.svg"></span>
+      <div class="subtitulo">Complete este campo...</div>
     </div>
-    <div class="subtitulo">Complete este campo...</div>
 </div>    
 
 <div class="col-md-6" id="div_apellido">

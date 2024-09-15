@@ -4,7 +4,6 @@ include_once "../../Estructura/header.php";
 ?>
 
 <!-- Incluyo el archivo JS con las validaciones de los campos -->
-<script type="text/javascript" src="../../Js/tp2ej2-1.js"></script>
 
 <!-- Incluyo el archivo CSS con los estilos del error en los campos inválidos -->
 <link rel="stylesheet" type="text/css" href="../../css/error.css">
@@ -20,11 +19,14 @@ include_once "../../Estructura/header.php";
   </p>
 </div>
 <div class="divform">
-  <form id="form1" name="form1" method="post" action="../Accion/ej2-1accion.php">
+  <form id="miFormulario" name="miFormulario" method="post" action="../Accion/ej2-1accion.php">
     <label for="numero">Ingrese un n&uacute;mero:</label><br>
-    <input type="text" name="numero" id="numero" oninput="validarNumero(this)"><br>
-    <input type="submit" id="enviar" name="enviar" value="Enviar" class="btn btn-success mt-5" role="button"><br>
+    <input type="text" name="numero" id="numeroNP" ><br>
+    <div class="error-numero"></div>
+    <input type="submit" id="enviar" name="enviar" value="Enviar" class="btn btn-success mt-5" ><br>
   </form>
 </div>
+<script type="text/javascript" src="../../Js/tp2.js"></script>
+
 
 <?php include_once '../../Estructura/footer.php'; ?>

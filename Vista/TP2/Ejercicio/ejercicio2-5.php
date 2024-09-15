@@ -4,7 +4,7 @@ include_once '../../Estructura/header.php';
 ?>
 
 <!--Incluyo el archivo JS con las validaciones de los campos-->
-<script src="../../Js/tp2ej2-5.js"></script>
+<script src="../../Js/tp2.js"></script>
 
 <div class="divtitulo">
     <h1><?php echo $titulo;?></h1>
@@ -16,15 +16,19 @@ include_once '../../Estructura/header.php';
   </p>
 </div>
 <div class="divform">
-    <form id="form5" name="form5" action="../Accion/ej2-5accion.php" method="get">
+    <form id="miFormulario" name="form5" action="../Accion/ej2-5accion.php" method="get">
       <label for="lnombre">Nombre:</label><br>
         <input type="text" name="nombre" id="nombre" class="nombreApellido" oninput="validarNombre(this)" ><br>
+        <div class="mensaje-error"></div>
         <label for="lapellido">Apellido:</label><br>
         <input type="text" name="apellido" id="apellido" class="nombreApellido" oninput="validarNombre(this)"><br>
+        <div class="mensaje-error"></div>
         <label for="ledad">Edad:</label><br>
-        <input type="text" name="edad" id="edad" oninput="validarEdad(this)"><br>
+        <input type="text" name="edad" id="edad"><br>
+        <div class="error-numero"></div>
         <label for="ldireccion">Direcci&oacute;n:</label><br>
         <input type="text" name="direccion" id="direccion" oninput="validarDireccion(this)"><br>
+        <div class="error-direccion"></div>
         <br>
 
         <label for="lnivelestudio">Nivel de estudios:</label><br>
@@ -35,13 +39,17 @@ include_once '../../Estructura/header.php';
           <label for="lsecundario">Secundarios</label><br>
           <input type="radio" id="estudio" name="estudio" value="3" >
           <label for="lterciario">Terciarios</label>
-        </div><br><br>
+        </div>
+        <div class="error-radio"></div>
+        <br><br>
+        
 
         <select name="sexo" id="sexo">
           <option value="">Seleccione una opci&oacute;n</option>
           <option value="M">Masculino</option>
           <option value="F">Femenino</option>
         </select><br>
+        <div class="error-select"></div>
 
         <br>
         <input class="btn btn-success" role="button" type="submit" name="enviar" id="enviar" value="Enviar">

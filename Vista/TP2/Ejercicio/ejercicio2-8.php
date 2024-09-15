@@ -4,7 +4,7 @@ include_once '../../Estructura/header.php';
 ?>
 
 <!--JQUERY con validaciones de los campos-->
-<script src="../../Js/tp2ej2-8.js"></script>
+<script src="../../Js/tp2.js"></script>
 
 <!-- Titulo -->
 <div class="divtitulo">
@@ -23,20 +23,24 @@ include_once '../../Estructura/header.php';
 
 <!-- Formulario -->
 <div class="divform">
-    <form name="form8" id="form8" method="get" action="../Accion/ej2-8accion.php">
+    <form name="form8" id="miFormulario" method="get" action="../Accion/ej2-8accion.php">
         <label>Ingrese sus datos para calcular la tarifa:</label><br><br>
 
         <!-- Edad -->
         <label>Edad:</label><br>
-        <input type="number" name="edad" id='edad'><br><br>
+        <input type="number" name="edad" id='edad'>
+        <div class="error-numero"></div>
+        <br><br>
 
         <!-- Estudia -->
         <label>Estudia:</label><br>
         <div class="radio-group">
-            <input type="radio" name="estudio" value="si">Estudio<br>
-            <input type="radio" name="estudio" value="no">No estudio<br><br>
+            <input type="radio"  id='estudio' name="estudio" value="si">Estudio<br>
+            <input type="radio"  id='estudio' name="estudio" value="no">No estudio<br><br>
         </div>
-
+        <div class="error-radio"></div>
+        <br><br>
+        
         <!-- Botones -->
         <input type="submit" name="submit" value="Enviar" class="btn btn-success" role="button">
         <input type="reset" value="Limpiar Formulario" class="btn btn-success" role="button">

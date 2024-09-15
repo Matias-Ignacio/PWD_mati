@@ -4,10 +4,10 @@ include_once '../../Estructura/header.php';
 ?>
 
 <!-- Incluyo el archivo JS con las validaciones de los campos -->
-<script type="text/javascript" src="../../Js/tp2ej2-4.js"></script>
+<script type="text/javascript" src="../../Js/tp2.js"></script>
 
 <!-- Incluyo el archivo CSS con los estilos del error en los campos inválidos -->
-<link rel="stylesheet" type="text/css" href="../../css/error.css">
+<!-- <link rel="stylesheet" type="text/css" href="../../css/error.css"> -->
 
 <div class="divtitulo">
     <h1><?php echo $titulo;?></h1>
@@ -19,23 +19,26 @@ include_once '../../Estructura/header.php';
   </p>
 </div>
 <div class="divform">
-    <form id="form4" name="form4" action="../Accion/ej2-4accion.php" method="get">
+    <form id="miFormulario" name="form4" action="../Accion/ej2-4accion.php" method="get">
       <label for="lnombre">Nombre:</label><br>
-        <input type="text" name="nombre" id="nombre" class="nombreApellido" oninput="validarNombre(this)" ><br>
+        <input type="text" name="nombre" id="nombre" class="nombreApellido"><br>
+        <div class="mensaje-error"></div>
         <label for="lapellido">Apellido:</label><br>
-        <input type="text" name="apellido" id="apellido" class="nombreApellido" oninput="validarNombre(this)"><br>
+        <input type="text" name="apellido" id="apellido" class="nombreApellido"><br>
+        <div class="mensaje-error"></div>
         <label for="ledad">Edad:</label><br>
-        <input type="text" name="edad" id="edad" oninput="validarEdad(this)"><br>
+        <input type="text" name="edad" id="edad" ><br>
+        <div class="error-numero"></div>
         <label for="ldireccion">Direcci&oacute;n:</label><br>
-        <input type="text" name="direccion" id="direccion" oninput="validarDireccion(this)"><br>
+        <input type="text" name="direccion" id="direccion"><br>
+        <div class="error-direccion"></div>
         <br>
 
         <!-- Campo oculto estudio -->
-        <input type="hidden" name="estudio" value=""><br>
+        <input type="radio" name="estudio" value="" checked style="display: none;"><br>
         <!-- Campo oculto sexo -->
-        <input type="hidden" name="sexo" value=""><br>
-
-        <input class="btn btn-success" role="button" type="submit" name="enviar" id="enviar" value="Enviar" onclick="return validar();">
+        <input type="radio" name="sexo" value="" checked style="display: none;"><br>
+        <input class="btn btn-success" role="button" type="submit" name="enviar" id="enviar" value="Enviar">
     </form>
 </div>
 

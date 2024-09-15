@@ -1,7 +1,7 @@
 <?php
 
-$titulo = "Ejercicio N 3";
-include_once "../../estructura/header.php";
+$titulo = "TP 2 - Ejercicio 3";
+include_once "../../Estructura/header.php";
 echo '<div class="divtitulo"> <h1>';
 echo $titulo.'</h1></div>';
 

@@ -8,7 +8,7 @@ class Ej8Cinema{
     public function __construct($arregloDatos)
     {
         $this->edad = $arregloDatos["edad"];
-        $this->estudio = $arregloDatos["estudia"];
+        $this->estudio = $arregloDatos["estudio"];
     }
 
     public function getEdad(){
