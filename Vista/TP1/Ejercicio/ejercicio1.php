@@ -15,8 +15,22 @@ include_once "../../Estructura/header.php";
 </div>
 <div class="divform">
 <form name="form1" method="post" action="../Accion/vernumero.php" >
-  <label for="lnumero">Ingrese un n&uacute;mero:</label><br>
-  <input type="text" name="numero" id="numero" value="0"><br>
+  <label for="NroDni">Ingrese un n&uacute;mero:</label>
+  <input type="text" name="NroDni" id="NroDni" ><br>
+
+  <label for="Nombre">NOmbre</label>
+  <input type="text" name="Nombre" id="Nombre" ><br>
+  
+  <label for="Domicilio">Domicilio</label>
+  <input type="text" name="Domicilio" id="Domicilio" ><br>
+    
+  <label for="Email">Email</label>
+  <input type="text" name="Email" id="Email" ><br>
+
+    
+  <label for="Telefono">Telefono</label>
+  <input type="text" name="Telefono" id="Telefono" ><br>
+
   <input type="submit" id="enviar" name="enviar" value="Enviar" class="btn btn-success" role="button"><br>
 </form>
 </div>

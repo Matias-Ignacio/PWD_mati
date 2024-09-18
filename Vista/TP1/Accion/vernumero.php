@@ -10,18 +10,16 @@ echo $titulo.'</h1></div>';
 
 if(!empty(data_submitted())){
     $arrayan = array();
-    $recibido=data_submitted();
-    $nro=intval($recibido["numero"]);
-    $obj = new Numero($nro);
+    $param = data_submitted();
+    $obj = new Numero();
   
 
 
     ?>
     <div class="divform">
-        <h1 id="tituloAccion1">El numero seleccionado es: <?php echo $obj->getNro(); ?></h1>
+        <h1 id="tituloAccion1">El numero seleccionado es: <?php echo "Probando..."; ?></h1>
         <?php 
-        echo "Algo:  ";
-        $param['NroDni'] = $nro;
+
         $arrayan = $obj->vDD($param);
         var_dump($arrayan);
 
