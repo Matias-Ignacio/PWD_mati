@@ -14,9 +14,9 @@ include_once "../../Estructura/header.php";
   </p>
 </div>
 <div class="divform">
-<form name="form1" method="post" action="../Accion/vernumero.php" onsubmit="return validar();">
+<form name="form1" method="post" action="../Accion/vernumero.php" >
   <label for="lnumero">Ingrese un n&uacute;mero:</label><br>
-  <input type="number" name="numero" id="numero" value="0"><br>
+  <input type="text" name="numero" id="numero" value="0"><br>
   <input type="submit" id="enviar" name="enviar" value="Enviar" class="btn btn-success" role="button"><br>
 </form>
 </div>

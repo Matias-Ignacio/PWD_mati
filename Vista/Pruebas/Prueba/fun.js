@@ -109,7 +109,7 @@ function contraseniaVisible(obj){
     var obj4 = obj.find(".subtitulo");
     var cadena = $(obj2).attr("type");
     if (cadena == "password"){
-        $(obj2).attr("type", "text");
+        $(obj2).attr("type", "text"); 
         $(obj3).html('<img src="../../Librerias/node_modules/bootstrap-icons/icons/eye.svg"></img>');
        return true;
     }else{
