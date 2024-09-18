@@ -93,3 +93,10 @@
 
 <!-- Footer -->
 <?php include_once '../../Estructura/footer.php'; ?>
+<script>
+  $(document).ready(function(){
+    $("#NroDni").blur(function(){
+      validarNombre($(this));
+    });
+  });
+</script>

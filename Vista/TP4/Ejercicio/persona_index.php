@@ -3,15 +3,25 @@
     include_once '../../Estructura/header.php';    
     $objAbmPersona = new AbmPersona();
     $listaPersona = $objAbmPersona->buscar(null);
-?>	
 
+
+    // Si no llegan datos del data_submited    
+    $datos = data_submitted();
+    if(!empty($datos))
+    {
+      if($datos['NroDni'] == 'null'){$datos['NroDni'] = "";}
+      $listaPersona= $objAbmPersona->buscarPorDni($datos['NroDni']);  //../Accion/persona_accion_buscar.php
+    }
+
+?>	
+<script type="text/javascript" src="../../Js/validacionTP4.js"></script>
 <div class="container mt-5 p-4 border rounded shadow">
   <h2 class="text-center">Listado de personas</h2>
   <p class="text-center">Listado de personas incluidas en la base de datos</p>      
   <div>
-    <form action="../Accion/persona_accion_buscar.php" method="post" class="container mt-5 p-4 border rounded shadow">
+    <form action="persona_index.php" method="post" class="container mt-5 p-4 border rounded shadow">
         <label for="buscar" class="form-label text-primary fw-bold">Buscar por DNI:</label>
-        <input name="NroDni" id="NroDni" type="text" pattern="[0-9]{6,8}" required onchange="buscador()"/>
+        <input name="NroDni" id="NroDni" type="text" pattern="[0-9]{0,8}" >
         <input type="submit" name="buscar" id="buscar" class="btn btn-info btn-sm" role="button" value="Buscar">
 	</form>
   </div>  
@@ -54,3 +64,4 @@
 </div>
 <!-- Footer -->
 <?php include_once '../../Estructura/footer.php'; ?>
+

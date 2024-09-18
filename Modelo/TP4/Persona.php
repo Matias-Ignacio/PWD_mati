@@ -166,6 +166,12 @@ class Persona {
         return $resp;
     }
     
+    
+    /**
+     * 
+     * @param string $parametro
+     * @return array
+     */
     public static function listar($parametro=""){
         $arreglo = array();
         $base = new BaseDatos();
@@ -188,5 +194,6 @@ class Persona {
         }
         return $arreglo;
     }
+
 }
 ?>

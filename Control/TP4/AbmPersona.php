@@ -136,7 +136,7 @@ class AbmPersona{
      public function buscarPersona($dni){
         $objP = new Persona();
         $personaEncontrada = null;
-        if($objP ->buscar($dni)){
+        if($objP ->buscar($dni)){    
             $personaEncontrada = $objP;
         }
 
@@ -168,6 +168,89 @@ class AbmPersona{
         }
         $arreglo = Persona::listar($where);  
         return $arreglo;
+    }
+
+    /**
+     * permite buscar una persona por dni parcial
+     * @param $dni
+     * @return array
+     */
+    public function buscarPorDni($dni){
+            $where = " NroDni LIKE '%".$dni."%'";     
+        $arreglo = Persona::listar($where);  
+        return $arreglo;
+    }
+
+    /**
+     * Validar el formato de los datos que llegan al servidor
+     * @param array
+     * @return boolean
+     */
+    public function validarDatos($param){
+        $exito = false;
+        $boolDni = false;
+        $boolApeNom= false;
+        $boolFecha = false;
+        $bollTelefono = false;
+        $boolDomicilio = false;
+        if ($param <> NULL)
+        {
+            if (isset($param['NroDni'])){
+                $val = $param['NroDni'];
+                if($val != "" && esNumero($val) && (count($val) > 6) && (count($val) < 9) && $val<99999999 && $val>1000000)
+                {$boolDni = true;}
+            }
+            if (isset($param['Apellido'])){
+                if(esLetra($param['Apellido']) && esLetra($param['Nombre']))
+                {$boolApeNom = true;}
+            }
+ 
+            if (isset($param['fechaNac'])){
+                if($boolFecha)
+                {$boolFecha = true;}
+            }
+                 
+            if (isset($param['Telefono'])){
+                if($boolTelefono)
+                {$boolTelefono = true;}
+            }
+
+            if (isset($param['Domicilio'])){
+                if(esLetraNumero($param['Domicilio']))
+                {$boolDomicilio = true;}
+            }
+
+        }
+        
+        return $exito;
+    }
+
+
+
+
+    private function esNumero($cadena){
+        $i = 0; 
+        while ($i < count($cadena)){
+            if (!(/[0-9]/.test(cadena.at($i)))) {return false;}
+            $i++;
+        }
+        return true;
+    }
+    private function esLetra($cadena){
+        $i = 0;
+        while ($i < count($cadena)){
+            if (!(/[A-Z ]/.test(cadena.at($i)))) {return false;}
+            $i++;
+        }
+        return true;
+    }
+    private function esLetraNumero($cadena){
+        $i = 0;
+        while ($i < count($cadena)){
+            if (!(/[A-Z0-9 ]/.test(cadena.at($i)))) {return false;}
+            $i++;
+        }
+        return true;
     }
 }
 ?>

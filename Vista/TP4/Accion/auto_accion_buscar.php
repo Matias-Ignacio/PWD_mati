@@ -4,8 +4,6 @@
     echo '<div class="divtitulo"> <h1>';
     echo $titulo.'</h1></div>';
     $datos = data_submitted();
-    //verEstructura($datos);
-
 
     if(!empty($datos))
     {

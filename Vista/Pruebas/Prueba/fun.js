@@ -143,7 +143,7 @@ function validarDni(obj){
 //***************************************************** */
 //Validar numero telefono minimo de 8 digitos
 /****************************************************** */
-function validarDni(obj){
+function validarTelefono(obj){
     var obj1 = obj.find(".input-group");
     var obj2 = obj1.find("input");
     var obj3 = obj1.find("span");

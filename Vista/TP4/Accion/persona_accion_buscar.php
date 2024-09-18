@@ -6,12 +6,7 @@
     $datos = data_submitted();
     if(!empty($datos))
     {
-      
-      
       $objP= $objAbmPersona -> buscarPersona($datos['NroDni']);
-      
-
-      
 ?>	
 
   <div class="container mt-3">

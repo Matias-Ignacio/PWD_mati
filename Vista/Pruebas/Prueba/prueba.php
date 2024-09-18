@@ -144,8 +144,21 @@ include_once "../../Estructura/header.php";
     });
   });
 
-  document.getElementById("dia").addEventListener("blur", validarFecha);
-  document.getElementById("mes").addEventListener("blur", validarFecha);
-  document.getElementById("anio").addEventListener("blur", validarFecha);
+  document.getElementById("dia").addEventListener("blur", function(){
+    obj = document.getElementById("dia");
+    var cadena = parseInt(obj.value);
+   
+    if (((cadena <= fechaActual.getFullYear()) && (cadena >= 2000)) || ((cadena <= 99) && (cadena >= 30))){
+        obj.setCustomValidity('');  // Restablecer la validez 
+        return true;
+    }else{
+        obj.setCustomValidity(' '); 
+        return false;
+    }
+  });
+
+ // document.getElementById("dia").addEventListener("blur", validarFecha);
+ // document.getElementById("mes").addEventListener("blur", validarFecha);
+ // document.getElementById("anio").addEventListener("blur", validarFecha);
 </script>
 
