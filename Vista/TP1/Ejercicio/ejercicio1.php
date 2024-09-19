@@ -27,9 +27,11 @@ include_once "../../Estructura/header.php";
   <label for="Email">Email</label>
   <input type="text" name="Email" id="Email" ><br>
 
-    
   <label for="Telefono">Telefono</label>
   <input type="text" name="Telefono" id="Telefono" ><br>
+
+  <label for="fechaNac">fechaNac</label>
+  <input type="text" name="fechaNac" id="fechaNac" ><br>
 
   <input type="submit" id="enviar" name="enviar" value="Enviar" class="btn btn-success" role="button"><br>
 </form>

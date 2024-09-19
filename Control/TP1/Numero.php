@@ -33,7 +33,8 @@
         $options['NroDni'] = array('options' => array('min_range' => 1000000,'max_range' => 99999999, ) );
         $options['Nombre'] = array('options' => array("regexp"=>"/[^A-z\s]/") );
         $options['Domicilio'] = array('options' => array("regexp"=>"/[^A-z0-9\s]/") );
-        $options['Telefono'] = array('options' => array("regexp"=>"/[0-9]-[0-9]/") );
+        $options['Telefono'] = array('options' => array("regexp"=>"/^[1-9][0-9]{1,3}-[0-9]{4,9}[0-9]$/") );
+        $options['fechaNac'] = array('options' => array("regexp"=>"/[0-9]{2}-[0-9]{2}-[0-9]{4}[0-9]$/") );
 
         if ($param <> NULL)
         {
@@ -61,15 +62,13 @@
             if (isset($param['Telefono'])){
                 if (($param['Telefono'] != 'null') && (filter_var($param['Telefono'], FILTER_VALIDATE_REGEXP, $options['Telefono']) !== FALSE)) {
                     $boolParam['Telefono'] = true;
-                    $boolParam['fecha'] = $param['Telefono'];
                 }
             }
-
-
- 
             if (isset($param['fechaNac'])){
-                if($boolParam['fecha'])
-                {$boolParam['fecha'] = true;}
+                if (($param['fechaNac'] != 'null') && (filter_var($param['fechaNac'], FILTER_VALIDATE_REGEXP, $options['fechaNac']) !== FALSE)){
+                   // $boolParam['fechaNac'] = true;
+                    $boolParam['fechaNac'] = $param['fechaNac'] ;
+                }
             }
 
         }
