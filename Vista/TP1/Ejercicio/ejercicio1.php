@@ -35,6 +35,15 @@ include_once "../../Estructura/header.php";
   
   <label for="Patente">Patente</label>
   <input type="text" name="Patente" id="Patente" ><br>
+    
+  <label for="Modelo">Modelo</label>
+  <input type="text" name="Modelo" id="Modelo" ><br>
+    
+  <label for="Usuario">Usuario</label>
+  <input type="text" name="Usuario" id="Usuario" ><br>
+    
+  <label for="Password">Contraseña</label>
+  <input type="text" name="Password" id="Password" ><br>
 
   <input type="submit" id="enviar" name="enviar" value="Enviar" class="btn btn-success" role="button"><br>
 </form>
