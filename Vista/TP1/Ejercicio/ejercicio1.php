@@ -15,10 +15,10 @@ include_once "../../Estructura/header.php";
 </div>
 <div class="divform">
 <form name="form1" method="post" action="../Accion/vernumero.php" >
-  <label for="NroDni">Ingrese un n&uacute;mero:</label>
+  <label for="NroDni">Dni:</label>
   <input type="text" name="NroDni" id="NroDni" ><br>
 
-  <label for="Nombre">NOmbre</label>
+  <label for="Nombre">Nombre</label>
   <input type="text" name="Nombre" id="Nombre" ><br>
   
   <label for="Domicilio">Domicilio</label>
@@ -32,6 +32,9 @@ include_once "../../Estructura/header.php";
 
   <label for="fechaNac">fechaNac</label>
   <input type="text" name="fechaNac" id="fechaNac" ><br>
+  
+  <label for="Patente">Patente</label>
+  <input type="text" name="Patente" id="Patente" ><br>
 
   <input type="submit" id="enviar" name="enviar" value="Enviar" class="btn btn-success" role="button"><br>
 </form>
