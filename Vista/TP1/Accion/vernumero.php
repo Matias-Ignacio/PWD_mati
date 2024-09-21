@@ -20,7 +20,7 @@ if(!empty(data_submitted())){
         <h1 id="tituloAccion1">El numero seleccionado es: <?php echo "Probando..."; ?></h1>
         <?php 
 
-        $arrayan = $obj->vDD($param);
+        $arrayan = $obj->validarPorClave($param, 'Nombre');
         var_dump($arrayan);
 
         ?>

@@ -5,8 +5,8 @@ class AbmAuto{
     
     /**
      * Espera como parametro un arreglo asociativo donde las claves coinciden con los Modelos de las variables instancias del objeto
-     * @param ARRAY $param
-     * @return OBJETO $objAuto
+     * @param array $param
+     * @return Auto
      */
     private function cargarObjeto($param){
         $objAuto = null; //Inicializo variable
@@ -28,8 +28,8 @@ class AbmAuto{
 
     /**
      * Espera como parametro un arreglo asociativo donde las claves coinciden con los Modelos de las variables instancias del objeto que son claves
-     * @param ARRAY $param
-     * @return OBJETO $objAuto
+     * @param array $param
+     * @return Auto
      */
     private function cargarObjetoConClave($param){
         $objAuto = null;
@@ -45,8 +45,8 @@ class AbmAuto{
     
     /**
      * Corrobora que dentro del arreglo asociativo estan seteados los campos claves
-     * @param ARRAY $param
-     * @return BOOLEAN $resp
+     * @param array $param
+     * @return boolean
      */
     private function seteadosCamposClaves($param){
         $resp = false;
@@ -58,24 +58,28 @@ class AbmAuto{
 
     /**
      * 
-     * @param ARRAY $param
-     * @return BOOLEAN $resp
+     * @param array $param
+     * @return bool
      */
     public function alta($param){
         $resp = false;
-        $elObjAuto = $this->cargarObjeto($param);
-//        verEstructura($elObjAuto);
-        if ($elObjAuto != null and $elObjAuto->insertar())
-        {
-            $resp = true;
+        if($this->vXc($param, 'Patente')
+        && $this->vXc($param, 'Marca')
+        && $this->vXc($param, 'Modelo')){
+            $elObjAuto = $this->cargarObjeto($param);
+ 
+            if ($elObjAuto != null and $elObjAuto->insertar())
+            {
+                $resp = true;
+            }
         }
         return $resp;
         
     }
     /**
      * permite eliminar un objeto 
-     * @param ARRAY $param
-     * @return BOOLEAN $resp
+     * @param array $param
+     * @return bool
      */
     public function baja($param){
         $resp = false;
@@ -93,8 +97,8 @@ class AbmAuto{
     
     /**
      * permite modificar un objeto
-     * @param ARRAY $param
-     * @return BOOLEAN $resp
+     * @param array
+     * @return boolean
      */
     public function modificacion($param)
     {
@@ -140,8 +144,8 @@ class AbmAuto{
 
         /**
      * permite modificar el dni ddel duenio
-     * @param array $param
-     * @return boolean $resp
+     * @param array
+     * @return boolean
      */
     public function modificarDni($param){
         //echo "Estoy en modificacion";
@@ -161,5 +165,48 @@ class AbmAuto{
         return $resp;
     }
     
+
+
+    
+
+/**
+ * Validar en el servidor 
+ * Recibe como parametro el arreglo completo y la clave aser validada
+ * @param $key
+ * @param array
+ * @return boolean
+ */
+ public function vXc($param, $key){
+
+    $bool   = false;
+
+    $options['Marca']   = array('options' => array("regexp"=>"/^[A-Z][A-z\sáéíóúüñÁÉÍÓÚÜÑ']{1,40}[A-z]$/") );
+    $options['Patente'] = array('options' => array("regexp"=>"/^[A-Z][A-Z]{2}[\s]{1}[0-9]{2}[0-9]$|^[A-Z][A-Z]{1}[\s]{1}[0-9]{3}[\s]{1}[A-Z]{1}[A-Z]$/") );
+    $options['Modelo']  = array('options' => array("regexp"=>"/^[3-9][0-9]$|^[1][9]{1}[3-9]{1}[0-9]$|^[2][0]{1}[0-9]{1}[0-9]$/") );
+
+    if ($param <> NULL)
+    {
+        if (($param[$key] != 'null') && (filter_var($param[$key], FILTER_VALIDATE_REGEXP, $options[$key]) !== FALSE)) {
+            //exepciones
+            if(($key === 'fechaNac')){
+                $dia = substr($param[$key],0,2);
+                $mes = substr($param[$key],3,2);
+                $ani = substr($param[$key],6,4);
+                $bool = checkdate($mes,$dia,$ani) ? true : false;
+            }elseif($key === 'Modelo'){
+                $bool = ($param[$key] <= date("Y")) ? true : false;
+            }else{
+                $bool = true;
+            }
+        }else{
+            $bool = false;
+        }
+    }
+    return $bool;
+}
+//****************************************************************************************** */
+
+
+
 }
 ?>
