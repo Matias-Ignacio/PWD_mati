@@ -214,9 +214,9 @@ public function vXc($param, $key){
         if (($param[$key] != 'null') && (filter_var($param[$key], FILTER_VALIDATE_REGEXP, $options[$key]) !== FALSE)) {
             //exepciones
             if(($key === 'fechaNac')){
-                $dia = substr($param[$key],0,4);
-                $mes = substr($param[$key],5,2);
-                $ani = substr($param[$key],8,2);
+                $dia = substr($param[$key],0,2);
+                $mes = substr($param[$key],3,2);
+                $ani = substr($param[$key],6,4);
                 $bool = checkdate($mes,$dia,$ani) ? true : false;
             }elseif($key === 'Modelo'){
                 $bool = ($param[$key] <= date("Y")) ? true : false;

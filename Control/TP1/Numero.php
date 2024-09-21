@@ -15,10 +15,11 @@
 
 /**
  * Validar en el servidor 
+ * Entrada $param con la clave de la clase, 
+ * devuelve un arreglo asociativo con la clave y un valor bool
  * @param array
  * @return boolean
  */
-
 
     public function validarTodo($param){
 
@@ -66,6 +67,8 @@
     }
 
 
+
+
 /**
  * Validar en el servidor 
  * Recibe como parametro el arreglo completo y la clave aser validada
@@ -73,7 +76,7 @@
  * @param array
  * @return boolean
  */
- public function validarPorClave($param, $key){
+ public function vXc($param, $key){
 
     $bool   = false;
 

@@ -67,7 +67,6 @@ class AbmAuto{
         && $this->vXc($param, 'Marca')
         && $this->vXc($param, 'Modelo')){
             $elObjAuto = $this->cargarObjeto($param);
- 
             if ($elObjAuto != null and $elObjAuto->insertar())
             {
                 $resp = true;
@@ -102,14 +101,17 @@ class AbmAuto{
      */
     public function modificacion($param)
     {
-        //echo "Estoy en modificacion";
         $resp = false;
-        if ($this->seteadosCamposClaves($param))
-        {
-            $elObjAuto = $this->cargarObjeto($param);
-            if($elObjAuto != null and $elObjAuto->modificar())
+        if($this->vXc($param, 'Patente')
+        && $this->vXc($param, 'Marca')
+        && $this->vXc($param, 'Modelo')){
+            if ($this->seteadosCamposClaves($param))
             {
-                $resp = true;
+                $elObjAuto = $this->cargarObjeto($param);
+                if($elObjAuto != null and $elObjAuto->modificar())
+                {
+                    $resp = true;
+                }
             }
         }
         return $resp;
@@ -131,10 +133,6 @@ class AbmAuto{
         {
             if (isset($param['Patente']))
             $where .= " and Patente = '".$param['Patente']."'";
-        /*  if (isset($param['Marca']))
-        $where .= " and Marca = '".$param['Marca']."'";
-        if (isset($param['Modelo']))
-        $where .= " and Modelo = '".$param['Modelo']."'";  */
         if (isset($param['DniDuenio']))
         $where .= " and DniDuenio = '".$param['DniDuenio']."'";    
         }
