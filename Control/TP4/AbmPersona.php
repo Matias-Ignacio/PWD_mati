@@ -62,11 +62,7 @@ class AbmPersona{
      */
     public function alta($param){
         $resp = false;
-        if($this->vXc($param, 'NroDni')
-        && $this->vXc($param, 'Apellido')
-        && $this->vXc($param, 'Nombre')
-        && $this->vXc($param, 'Telefono')
-        && $this->vXc($param, 'Domicilio')){
+        if($this->validarTodo($param)){
             $elObjPersona = $this->cargarObjeto($param);
             if ($elObjPersona != null and $elObjPersona->insertar())
             {
@@ -118,11 +114,7 @@ class AbmPersona{
      */
     public function modificacion($param){
         $resp = false;
-        if($this->vXc($param, 'NroDni')
-        && $this->vXc($param, 'Apellido')
-        && $this->vXc($param, 'Nombre')
-        && $this->vXc($param, 'Telefono')
-        && $this->vXc($param, 'Domicilio')){
+        if($this->validarTodo($param)){
             if ($this->seteadosCamposClaves($param))
             {
                 $elObjPersona = $this->cargarObjeto($param);
@@ -200,15 +192,15 @@ class AbmPersona{
  */
 public function vXc($param, $key){
     $bool   = false;
-    $options['NroDni']   = "/^[1-9][0-9]{5,6}[0-9]$/";
-    $options['Apellido'] = "/^[A-Z][A-z\sáéíóúüñÁÉÍÓÚÜÑ']{0,40}[A-z]$/";
-    $options['Nombre']   = "/^[A-Z][A-z\sáéíóúüñÁÉÍÓÚÜÑ']{0,40}[A-z]$/";
-    $options['fechaNac'] = "/^[0-3][0-9]{1}-[0-9]{2}-[0-9]{3}[0-9]$/";
-    $options['Telefono'] = "/^[1-9][0-9]{1,3}-[0-9]{4,9}[0-9]$/";
-    $options['Domicilio']= "/^[A-Z][A-z\sáéíóúüñÁÉÍÓÚÜÑ'°0-9]{1,40}[A-z0-9]$/";
+    $options['NroDni']   = array('options' => array("/^[1-9][0-9]{5,6}[0-9]$/"));
+    $options['Apellido'] = array('options' => array("/^[A-Z][A-z\sáéíóúüñÁÉÍÓÚÜÑ']{0,40}[A-z]$/"));
+    $options['Nombre']   = array('options' => array("/^[A-Z][A-z\sáéíóúüñÁÉÍÓÚÜÑ']{0,40}[A-z]$/"));
+    $options['fechaNac'] = array('options' => array("/^[0-3][0-9]{1}-[0-9]{2}-[0-9]{3}[0-9]$/"));
+    $options['Telefono'] = array('options' => array("/^[1-9][0-9]{1,3}-[0-9]{4,9}[0-9]$/"));
+    $options['Domicilio']= array('options' => array("/^[A-Z][A-z\sáéíóúüñÁÉÍÓÚÜÑ'°0-9]{1,40}[A-z0-9]$/"));
     if ($param <> NULL)
     {
-        if (($param[$key] != 'null') && (preg_match($options[$key], $param[$key]) !== FALSE)) {
+        if (($param[$key] != 'null') && (filter_var($param[$key], FILTER_VALIDATE_REGEXP, $options[$key]) !== FALSE)) {
             //exepciones
             if(($key === 'fechaNac')){
                 $dia = substr($param[$key],0,2);
@@ -227,19 +219,36 @@ public function vXc($param, $key){
 /**
  * Validar en el servidor 
  * Recibe como parametro el arreglo completo y la clave aser validada
- * @param $key
  * @param array
  * @return boolean
  */
-public function validarTdoPersona($param, $key){
+public function validarTodo($param){
     $bool   = false;
-    $options['NroDni']   = "/^[1-9][0-9]{5,6}[0-9]$/";
-    $options['Apellido'] = "/^[A-Z][A-z\sáéíóúüñÁÉÍÓÚÜÑ']{0,40}[A-z]$/";
-    $options['Nombre']   = "/^[A-Z][A-z\sáéíóúüñÁÉÍÓÚÜÑ']{0,40}[A-z]$/";
-    $options['fechaNac'] = "/^[0-3][0-9]{1}-[0-9]{2}-[0-9]{3}[0-9]$/";
-    $options['Telefono'] = "/^[1-9][0-9]{1,3}-[0-9]{4,9}[0-9]$/";
-    $options['Domicilio']= "/^[A-Z][A-z\sáéíóúüñÁÉÍÓÚÜÑ'°0-9]{1,40}[A-z0-9]$/";
-
+    $listaKey = ['NroDni', 'Apellido', 'Nombre', 'fechaNac', 'Telefono', 'Domicilio'];
+    $options['NroDni']   = array('options' => array("/^[1-9][0-9]{5,6}[0-9]$/"));
+    $options['Apellido'] = array('options' => array("/^[A-Z][A-z\sáéíóúüñÁÉÍÓÚÜÑ']{0,40}[A-z]$/"));
+    $options['Nombre']   = array('options' => array("/^[A-Z][A-z\sáéíóúüñÁÉÍÓÚÜÑ']{0,40}[A-z]$/"));
+    $options['fechaNac'] = array('options' => array("/^[0-3][0-9]{1}-[0-9]{2}-[0-9]{3}[0-9]$/"));
+    $options['Telefono'] = array('options' => array("/^[1-9][0-9]{1,3}-[0-9]{4,9}[0-9]$/"));
+    $options['Domicilio']= array('options' => array("/^[A-Z][A-z\sáéíóúüñÁÉÍÓÚÜÑ'°0-9]{1,40}[A-z0-9]$/"));
+    if ($param <> NULL)
+    {
+        foreach ($listaKey as $key){
+            if (($param[$key] != 'null') && (filter_var($param[$key], FILTER_VALIDATE_REGEXP, $options[$key]) !== FALSE)) {
+                //exepciones
+                if(($key === 'fechaNac')){
+                    $dia = substr($param[$key],0,2);
+                    $mes = substr($param[$key],3,2);
+                    $ani = substr($param[$key],6,4);
+                    $bool = checkdate($mes,$dia,$ani) ? true : false;
+                }elseif($key === 'Modelo'){$bool = ($param[$key] <= date("Y")) ? true : false;
+                }else{     $bool = true;
+                }
+            }else{         $bool = false;
+            }
+            if ($bool === false) break;
+        }
+    }
     
     return $bool;
 }

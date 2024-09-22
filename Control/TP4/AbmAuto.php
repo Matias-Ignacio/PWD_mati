@@ -63,9 +63,7 @@ class AbmAuto{
      */
     public function alta($param){
         $resp = false;
-        if($this->vXc($param, 'Patente')
-        && $this->vXc($param, 'Marca')
-        && $this->vXc($param, 'Modelo')){
+        if($this->validarTodoAuto($param)){
             $elObjAuto = $this->cargarObjeto($param);
             if ($elObjAuto != null and $elObjAuto->insertar())
             {
@@ -102,9 +100,7 @@ class AbmAuto{
     public function modificacion($param)
     {
         $resp = false;
-        if($this->vXc($param, 'Patente')
-        && $this->vXc($param, 'Marca')
-        && $this->vXc($param, 'Modelo')){
+        if($this->validarTodoAuto($param)){
             if ($this->seteadosCamposClaves($param))
             {
                 $elObjAuto = $this->cargarObjeto($param);
@@ -175,24 +171,20 @@ class AbmAuto{
  * @return boolean
  */
  public function vXc($param, $key){
-    $bool   = false;
-    $options['Marca']     = "/^[A-Z][A-z\sáéíóúüñÁÉÍÓÚÜÑ']{1,40}[A-z]$/";
-    $options['Patente']   = "/^[A-Z][A-Z]{2}[\s]{1}[0-9]{2}[0-9]$|^[A-Z][A-Z]{1}[\s]{1}[0-9]{3}[\s]{1}[A-Z]{1}[A-Z]$/";
-    $options['Modelo']    = "/^[3-9][0-9]$|^[1][9]{1}[3-9]{1}[0-9]$|^[2][0]{1}[0-9]{1}[0-9]$/";
-    $options['DniDuenio'] = "/^[1-9][0-9]{5,6}[0-9]$/";
+    $bool   = true;
+    $options['Marca']     = array('options' => array("regexp"=>"/^[A-Z][A-z\sáéíóúüñÁÉÍÓÚÜÑ']{1,40}[A-z]$/"));
+    $options['Patente']   = array('options' => array("regexp"=>"/^[A-Z][A-Z]{2}[\s]{1}[0-9]{2}[0-9]$|^[A-Z][A-Z]{1}[\s]{1}[0-9]{3}[\s]{1}[A-Z]{1}[A-Z]$/"));
+    $options['Modelo']    = array('options' => array("regexp"=>"/^[3-9][0-9]$|^[1][9]{1}[3-9]{1}[0-9]$|^[2][0]{1}[0-9]{1}[0-9]$/"));
+    $options['DniDuenio'] = array('options' => array("regexp"=>"/^[1-9][0-9]{5,6}[0-9]$/"));
 
     if ($param <> NULL)
-    {
-        if (($param[$key] != 'null') && (preg_match($options[$key], $param[$key]) !== FALSE)) {
-            //exepciones
-            if($key === 'Modelo'){
-                $bool = ($param[$key] <= date("Y")) ? true : false;
-            }else{
-                $bool = true;
-            }
-        }else{
-            $bool = false;
-        }
+    {                 
+        if (($param[$key] != 'null') && (filter_var($param[$key], FILTER_VALIDATE_REGEXP, $options[$key]) !== FALSE)) {
+                //exepciones
+                if($key === 'Modelo'){
+                    $bool = ($param[$key] <= date("Y")) ? true : false;
+                }else{   $bool = true;  }
+            }else{    $bool = false;    }
     }
     return $bool;
 }
@@ -201,17 +193,32 @@ class AbmAuto{
 /**
  * Validar en el servidor 
  * Recibe como parametro el arreglo completo y la clave aser validada
- * @param $key
  * @param array
  * @return boolean
  */
-public function validarTodoAuto($param, $key){
+public function validarTodoAuto($param){
     $bool   = false;
-    $options['Marca']     = "/^[A-Z][A-z\sáéíóúüñÁÉÍÓÚÜÑ']{1,40}[A-z]$/";
-    $options['Patente']   = "/^[A-Z][A-Z]{2}[\s]{1}[0-9]{2}[0-9]$|^[A-Z][A-Z]{1}[\s]{1}[0-9]{3}[\s]{1}[A-Z]{1}[A-Z]$/";
-    $options['Modelo']    = "/^[3-9][0-9]$|^[1][9]{1}[3-9]{1}[0-9]$|^[2][0]{1}[0-9]{1}[0-9]$/";
-    $options['DniDuenio'] = "/^[1-9][0-9]{5,6}[0-9]$/";
-
+    $listaKey = ['Patente', 'Marca', 'Modelo', 'DniDuenio'];
+    $options['Marca']     = array('options' => array("regexp"=>"/^[A-Z][A-z\sáéíóúüñÁÉÍÓÚÜÑ']{1,40}[A-z]$/"));
+    $options['Patente']   = array('options' => array("regexp"=>"/^[A-Z][A-Z]{2}[\s]{1}[0-9]{2}[0-9]$|^[A-Z][A-Z]{1}[\s]{1}[0-9]{3}[\s]{1}[A-Z]{1}[A-Z]$/"));
+    $options['Modelo']    = array('options' => array("regexp"=>"/^[3-9][0-9]$|^[1][9]{1}[3-9]{1}[0-9]$|^[2][0]{1}[0-9]{1}[0-9]$/"));
+    $options['DniDuenio'] = array('options' => array("regexp"=>"/^[1-9][0-9]{5,6}[0-9]$/"));
+    if ($param <> NULL)
+    {
+        foreach ($listaKey as $key){
+            if (($param[$key] != 'null') && (filter_var($param[$key], FILTER_VALIDATE_REGEXP, $options[$key]) !== FALSE)) {
+                //exepciones
+                if($key === 'Modelo'){
+                    $bool = ($param[$key] <= date("Y")) ? true : false;
+                }else{
+                    $bool = true;
+                }
+            }else{
+                $bool = false;
+            }
+            if ($bool === false) break;
+        }
+    }
     
     return $bool;
 }
